@@ -103,7 +103,7 @@ async function bookMentor(req, res) {
         `, [duration, mentorIdToUse, formattedDate, formattedDate, duration]);
 
         await connection.commit();
-        res.status(200).json({ message: 'Booking confirmed', totalCost });
+        res.status(200).json({student_id: studentId,mentor_id: mentorIdToUse, message: `Booking confirmed by student ID ${studentId}`, totalCost });
     } catch (error) {
         await connection.rollback();
         res.status(500).json({ message: 'Booking failed', error });
